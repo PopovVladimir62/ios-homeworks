@@ -17,7 +17,6 @@ class ModalViewController: UIViewController {
     }
     
     func assignbackground(){
-        
         let imageName = "mem"
         let image = UIImage(named: imageName)
         let imageView = UIImageView(image: image!)
