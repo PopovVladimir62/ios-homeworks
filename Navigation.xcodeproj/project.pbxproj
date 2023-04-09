@@ -14,10 +14,10 @@
 		E75AB03B29DD6AFD004D5DB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E75AB03A29DD6AFD004D5DB3 /* Assets.xcassets */; };
 		E75AB03E29DD6AFD004D5DB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E75AB03C29DD6AFD004D5DB3 /* LaunchScreen.storyboard */; };
 		E75AB04829DD7E19004D5DB3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */; };
-		E75AB04A29DD7E3D004D5DB3 /* UserFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB04929DD7E3D004D5DB3 /* UserFeedController.swift */; };
+		E75AB04A29DD7E3D004D5DB3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB04929DD7E3D004D5DB3 /* FeedViewController.swift */; };
 		E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB04F29DD887D004D5DB3 /* CustomColor.swift */; };
 		E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB05129DD9490004D5DB3 /* PostViewController.swift */; };
-		E7FF7CE529DEF8DB00C33098 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF7CE429DEF8DB00C33098 /* ModalViewController.swift */; };
+		E7FF7CE529DEF8DB00C33098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +30,10 @@
 		E75AB03D29DD6AFD004D5DB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E75AB03F29DD6AFD004D5DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		E75AB04929DD7E3D004D5DB3 /* UserFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedController.swift; sourceTree = "<group>"; };
+		E75AB04929DD7E3D004D5DB3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		E75AB04F29DD887D004D5DB3 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		E75AB05129DD9490004D5DB3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		E7FF7CE429DEF8DB00C33098 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */,
-				E75AB04929DD7E3D004D5DB3 /* UserFeedController.swift */,
+				E75AB04929DD7E3D004D5DB3 /* FeedViewController.swift */,
 				E75AB05129DD9490004D5DB3 /* PostViewController.swift */,
-				E7FF7CE429DEF8DB00C33098 /* ModalViewController.swift */,
+				E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,14 +160,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E75AB04A29DD7E3D004D5DB3 /* UserFeedController.swift in Sources */,
+				E75AB04A29DD7E3D004D5DB3 /* FeedViewController.swift in Sources */,
 				E75AB03629DD6AFC004D5DB3 /* MainTabBarController.swift in Sources */,
 				E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */,
 				E75A4ED629DEB8B400AE08D6 /* Post.swift in Sources */,
 				E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */,
 				E75AB04829DD7E19004D5DB3 /* ProfileViewController.swift in Sources */,
 				E75AB03229DD6AFC004D5DB3 /* AppDelegate.swift in Sources */,
-				E7FF7CE529DEF8DB00C33098 /* ModalViewController.swift in Sources */,
+				E7FF7CE529DEF8DB00C33098 /* InfoViewController.swift in Sources */,
 				E75AB03429DD6AFC004D5DB3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
