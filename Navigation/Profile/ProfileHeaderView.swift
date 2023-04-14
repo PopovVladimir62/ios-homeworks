@@ -65,6 +65,7 @@ class ProfileHeaderView: UIView {
     
     @objc func tapButton() {
         statusLabel.text = statusTextField.text
+        print("\(statusTextField.text ?? "")")
         statusTextField.text = ""
     }
 //MARK: - textfield to write the status
