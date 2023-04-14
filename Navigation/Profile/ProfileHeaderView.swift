@@ -94,8 +94,8 @@ class ProfileHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setupViews()
-        setConstrains()
+        setupHierarchy()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -103,22 +103,22 @@ class ProfileHeaderView: UIView {
     }
 //MARK: - add UIelements
     
-    private func setupViews() {
+    private func setupHierarchy() {
         addSubview(nameLabel)
         addSubview(avatarImage)
         addSubview(statusLabel)
-        addSubview(statusButton)
         addSubview(statusTextField)
+        addSubview(statusButton)
     }
 //MARK: - layout
     
-    func setConstrains(){
+    func setupLayout(){
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-            nameLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+            nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            avatarImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            avatarImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             avatarImage.widthAnchor.constraint(equalToConstant: 120),
             avatarImage.heightAnchor.constraint(equalToConstant: 120),
             
@@ -126,8 +126,8 @@ class ProfileHeaderView: UIView {
             statusLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             
             statusButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 36),
-            statusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            statusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 50),
             
             statusTextField.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
