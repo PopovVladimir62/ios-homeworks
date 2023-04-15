@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
-    
+//MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(moveButton)
@@ -64,7 +64,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(myProfileHeaderView)
         myProfileHeaderView.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+//MARK: - layuot
     func setupLayout() {
         topLayout = [
             myProfileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
@@ -86,7 +86,7 @@ class ProfileViewController: UIViewController {
             moveButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
     }
-    
+
     private func activateBottomLayout() {
         NSLayoutConstraint.deactivate(topLayout)
         NSLayoutConstraint.activate(bottomLayout)
