@@ -10,16 +10,13 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     let myProfileHeaderView = ProfileHeaderView()
-    private var topLayout = [NSLayoutConstraint]()
-    private var bottomLayout = [NSLayoutConstraint]()
-    private var isLayoutOnTop = true
     
-//MARK: - button for replace myProfileHeaderView
+    //MARK: - button
     
-    private lazy var moveButton: UIButton = {
+    private lazy var newButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blue
-        button.setTitle("Move profile", for: .normal)
+        button.setTitle("new action", for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
         button.layer.cornerRadius = 4
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .regular)
@@ -34,28 +31,22 @@ class ProfileViewController: UIViewController {
     }()
     
     @objc func tapButton() {
-        isLayoutOnTop.toggle()
-        viewWillLayoutSubviews()
+        //future code here
     }
-//MARK: - fill in top area in Profile title
+    //MARK: - fill in top area in Profile title
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
-//MARK: - lifecycle
+    //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(moveButton)
+        view.addSubview(newButton)
         setupMyProfileHeaderView()
         setupLayout()
         initializeHideKeyboard()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        isLayoutOnTop ? activateTopLayout() : activateBottomLayout()
     }
     
     func setupMyProfileHeaderView() {
@@ -64,37 +55,18 @@ class ProfileViewController: UIViewController {
         view.addSubview(myProfileHeaderView)
         myProfileHeaderView.translatesAutoresizingMaskIntoConstraints = false
     }
-//MARK: - layuot
+    //MARK: - layout
     func setupLayout() {
-        topLayout = [
+        NSLayoutConstraint.activate([
             myProfileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             myProfileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             myProfileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             myProfileHeaderView.heightAnchor.constraint(equalToConstant: 220),
             
-            moveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            moveButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ]
-        
-        bottomLayout = [
-            myProfileHeaderView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            myProfileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            myProfileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            myProfileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            
-            moveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            moveButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ]
-    }
-
-    private func activateBottomLayout() {
-        NSLayoutConstraint.deactivate(topLayout)
-        NSLayoutConstraint.activate(bottomLayout)
-    }
-    
-    private func activateTopLayout() {
-        NSLayoutConstraint.deactivate(bottomLayout)
-        NSLayoutConstraint.activate(topLayout)
+            newButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            newButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
 }
