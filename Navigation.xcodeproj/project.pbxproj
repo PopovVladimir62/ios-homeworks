@@ -18,6 +18,7 @@
 		E75AB04A29DD7E3D004D5DB3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB04929DD7E3D004D5DB3 /* FeedViewController.swift */; };
 		E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB04F29DD887D004D5DB3 /* CustomColor.swift */; };
 		E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB05129DD9490004D5DB3 /* PostViewController.swift */; };
+		E7774C7529F00E3000E42DB0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7774C7429F00E3000E42DB0 /* LogInViewController.swift */; };
 		E7FF7CE529DEF8DB00C33098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		E75AB04929DD7E3D004D5DB3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		E75AB04F29DD887D004D5DB3 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		E75AB05129DD9490004D5DB3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		E7774C7429F00E3000E42DB0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +56,7 @@
 			children = (
 				E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */,
 				E74ED3C129E459A000B85BF3 /* ProfileHeaderView.swift */,
+				E7774C7429F00E3000E42DB0 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			files = (
 				E75AB04A29DD7E3D004D5DB3 /* FeedViewController.swift in Sources */,
 				E75AB03629DD6AFC004D5DB3 /* MainTabBarController.swift in Sources */,
+				E7774C7529F00E3000E42DB0 /* LogInViewController.swift in Sources */,
 				E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */,
 				E75A4ED629DEB8B400AE08D6 /* Post.swift in Sources */,
 				E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */,

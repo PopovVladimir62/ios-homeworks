@@ -44,3 +44,4 @@ class InfoViewController: UIViewController {
         self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
+    
