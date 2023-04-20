@@ -25,7 +25,7 @@ class MainTabBarController: UITabBarController {
                 title: "Profile",
                 image: UIImage(systemName: "person.crop.circle")),
             generateVC(
-                viewController: UINavigationController(rootViewController: UserFeedController()),
+                viewController: UINavigationController(rootViewController: FeedViewController()),
                 title: "User feed",
                 image: UIImage(systemName: "info.bubble"))
         ]

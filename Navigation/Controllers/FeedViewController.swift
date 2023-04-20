@@ -7,8 +7,9 @@
 
 import UIKit
 
-class UserFeedController: UIViewController {
+class FeedViewController: UIViewController {
     
+    var somePost = Post(title: "My post!")
     let button = UIButton()
 
     override func viewDidLoad() {
