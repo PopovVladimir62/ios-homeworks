@@ -10,31 +10,34 @@ import UIKit
 class FeedViewController: UIViewController {
     
     var somePost = Post(title: "My post!")
-    let button = UIButton()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = CustomColor().hexStringToUIColor(hex: "DCA7AC")
-        configurationButton()
-    }
     
-    func configurationButton() {
-        view.addSubview(button)
+    lazy var feedButton: UIButton = {
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = CustomColor().hexStringToUIColor(hex: "9A208C")
         button.setTitle("See my post", for: .normal)
         button.titleLabel?.font = UIFont(name: "See my post", size: 20)
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
-        
-        NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
-            button.widthAnchor.constraint(equalToConstant: 150),
-            button.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
         button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        
+        return button
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = CustomColor().hexStringToUIColor(hex: "DCA7AC")
+        view.addSubview(feedButton)
+        configurationButtonConstraints()
+    }
+    
+    func configurationButtonConstraints() {
+        NSLayoutConstraint.activate([
+            feedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            feedButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
+            feedButton.widthAnchor.constraint(equalToConstant: 150),
+            feedButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 
     @objc private func onTap() {
