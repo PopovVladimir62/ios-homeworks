@@ -11,39 +11,71 @@ class FeedViewController: UIViewController {
     
     var somePost = Post(title: "My post!")
     
-    lazy var feedButton: UIButton = {
+//MARK: - stackview with buttons
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.addArrangedSubview(self.firstFeedButton)
+        stackView.addArrangedSubview(self.secondFeedButton)
+        
+        return stackView
+    }()
+    
+//MARK: - buttons
+    
+    private lazy var firstFeedButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.gray, for: .highlighted)
         button.backgroundColor = CustomColor().hexStringToUIColor(hex: "9A208C")
         button.setTitle("See my post", for: .normal)
         button.titleLabel?.font = UIFont(name: "See my post", size: 20)
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
         
         return button
     }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = CustomColor().hexStringToUIColor(hex: "DCA7AC")
-        view.addSubview(feedButton)
-        configurationButtonConstraints()
-    }
     
-    func configurationButtonConstraints() {
-        NSLayoutConstraint.activate([
-            feedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            feedButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
-            feedButton.widthAnchor.constraint(equalToConstant: 150),
-            feedButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-
-    @objc private func onTap() {
+    private lazy var secondFeedButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.gray, for: .highlighted)
+        button.backgroundColor = CustomColor().hexStringToUIColor(hex: "9A208C")
+        button.setTitle("See my post", for: .normal)
+        button.titleLabel?.font = UIFont(name: "See my post", size: 20)
+        button.layer.cornerRadius = 4
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc private func pressButton() {
         let postViewController = PostViewController()
         navigationController?.pushViewController(postViewController, animated: true)
     }
 
+//MARK: - lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(stackView)
+        view.backgroundColor = CustomColor().hexStringToUIColor(hex: "DCA7AC")
+        setupLayout()
+    }
+    
+//MARK: - layout
+    func setupLayout() {
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
 }
 

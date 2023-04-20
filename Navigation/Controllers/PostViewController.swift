@@ -12,7 +12,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onTap))
+        let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pressButton))
         navigationItem.rightBarButtonItem = barButton
     }
 
@@ -21,7 +21,7 @@ class PostViewController: UIViewController {
         self.view.backgroundColor = CustomColor().hexStringToUIColor(hex: "C0DBEA")
     }
 
-    @objc private func onTap() {
+    @objc private func pressButton() {
         let someVC = InfoViewController()
         let navVC = UINavigationController(rootViewController: someVC)
         present(navVC, animated: true)
