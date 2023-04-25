@@ -101,7 +101,7 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//MARK: - add UIelements
+//MARK: - add UI elements
     
     private func setupHierarchy() {
         addSubview(nameLabel)

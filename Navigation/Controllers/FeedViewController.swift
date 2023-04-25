@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    var somePost = Post(title: "My post!")
+  //  var somePost = Post(title: "My post!")
     
 //MARK: - stackview with buttons
     

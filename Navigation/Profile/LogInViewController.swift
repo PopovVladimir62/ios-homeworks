@@ -54,7 +54,7 @@ class LogInViewController: UIViewController {
         textField.leftViewMode = .always
         textField.leftView = spacerView
         textField.addTarget(self, action: #selector(textFieldShouldReturn), for: .editingDidEndOnExit)
-        //tintColor: accentColor???
+
         return textField
     }()
     

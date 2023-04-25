@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E74ED3C229E459A000B85BF3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74ED3C129E459A000B85BF3 /* ProfileHeaderView.swift */; };
+		E71B294B29F16AE800A74C26 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B294A29F16AE800A74C26 /* PostTableViewCell.swift */; };
+		E74ED3C229E459A000B85BF3 /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74ED3C129E459A000B85BF3 /* ProfileTableHederView.swift */; };
 		E75A4ED629DEB8B400AE08D6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75A4ED529DEB8B300AE08D6 /* Post.swift */; };
 		E75AB03229DD6AFC004D5DB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB03129DD6AFC004D5DB3 /* AppDelegate.swift */; };
 		E75AB03429DD6AFC004D5DB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB03329DD6AFC004D5DB3 /* SceneDelegate.swift */; };
@@ -19,11 +20,14 @@
 		E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB04F29DD887D004D5DB3 /* CustomColor.swift */; };
 		E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AB05129DD9490004D5DB3 /* PostViewController.swift */; };
 		E7774C7529F00E3000E42DB0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7774C7429F00E3000E42DB0 /* LogInViewController.swift */; };
+		E7C92E4329F548A700E978E3 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */; };
+		E7DF6C1B29F139BD008A0030 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */; };
 		E7FF7CE529DEF8DB00C33098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E74ED3C129E459A000B85BF3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		E71B294A29F16AE800A74C26 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		E74ED3C129E459A000B85BF3 /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		E75A4ED529DEB8B300AE08D6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E75AB02E29DD6AFC004D5DB3 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75AB03129DD6AFC004D5DB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,8 @@
 		E75AB04F29DD887D004D5DB3 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		E75AB05129DD9490004D5DB3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		E7774C7429F00E3000E42DB0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+Extensions.swift"; path = "Navigation/Extensions/UITableView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,9 +60,10 @@
 		E74ED3C029E4594D00B85BF3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */,
-				E74ED3C129E459A000B85BF3 /* ProfileHeaderView.swift */,
 				E7774C7429F00E3000E42DB0 /* LogInViewController.swift */,
+				E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */,
+				E71B294A29F16AE800A74C26 /* PostTableViewCell.swift */,
+				E74ED3C129E459A000B85BF3 /* ProfileTableHederView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -87,6 +94,7 @@
 				E75AB04F29DD887D004D5DB3 /* CustomColor.swift */,
 				E74ED3C029E4594D00B85BF3 /* Profile */,
 				E75AB05329DDAE3E004D5DB3 /* Controllers */,
+				E7C92E4129F5486C00E978E3 /* Extensions */,
 				E75AB03A29DD6AFD004D5DB3 /* Assets.xcassets */,
 				E75AB03C29DD6AFD004D5DB3 /* LaunchScreen.storyboard */,
 				E75AB03F29DD6AFD004D5DB3 /* Info.plist */,
@@ -102,6 +110,15 @@
 				E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E7C92E4129F5486C00E978E3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */,
+				E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,15 +191,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C92E4329F548A700E978E3 /* UIView+Extensions.swift in Sources */,
 				E75AB04A29DD7E3D004D5DB3 /* FeedViewController.swift in Sources */,
 				E75AB03629DD6AFC004D5DB3 /* MainTabBarController.swift in Sources */,
+				E71B294B29F16AE800A74C26 /* PostTableViewCell.swift in Sources */,
 				E7774C7529F00E3000E42DB0 /* LogInViewController.swift in Sources */,
+				E7DF6C1B29F139BD008A0030 /* UITableView+Extensions.swift in Sources */,
 				E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */,
 				E75A4ED629DEB8B400AE08D6 /* Post.swift in Sources */,
 				E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */,
 				E75AB04829DD7E19004D5DB3 /* ProfileViewController.swift in Sources */,
 				E75AB03229DD6AFC004D5DB3 /* AppDelegate.swift in Sources */,
-				E74ED3C229E459A000B85BF3 /* ProfileHeaderView.swift in Sources */,
+				E74ED3C229E459A000B85BF3 /* ProfileTableHederView.swift in Sources */,
 				E7FF7CE529DEF8DB00C33098 /* InfoViewController.swift in Sources */,
 				E75AB03429DD6AFC004D5DB3 /* SceneDelegate.swift in Sources */,
 			);
