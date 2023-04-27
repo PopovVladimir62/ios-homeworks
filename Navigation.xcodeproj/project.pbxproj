@@ -67,16 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E74ED3C029E4594D00B85BF3 /* Profile */ = {
+		E74ED3C029E4594D00B85BF3 /* ProfileControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E78D061829F9404C002E8F3A /* Cells */,
 				E78D061D29F9415E002E8F3A /* PhotosViewController.swift */,
 				E7774C7429F00E3000E42DB0 /* LogInViewController.swift */,
 				E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */,
 				E74ED3C129E459A000B85BF3 /* ProfileTableHederView.swift */,
+				E78D061829F9404C002E8F3A /* Cells */,
 			);
-			path = Profile;
+			path = ProfileControllers;
 			sourceTree = "<group>";
 		};
 		E75AB02529DD6AFC004D5DB3 = {
@@ -100,8 +100,6 @@
 			children = (
 				E75AB03129DD6AFC004D5DB3 /* AppDelegate.swift */,
 				E75AB03329DD6AFC004D5DB3 /* SceneDelegate.swift */,
-				E75AB03529DD6AFC004D5DB3 /* MainTabBarController.swift */,
-				E74ED3C029E4594D00B85BF3 /* Profile */,
 				E75AB05329DDAE3E004D5DB3 /* Controllers */,
 				E7C92E4129F5486C00E978E3 /* Extensions */,
 				E78D062529FA8F1F002E8F3A /* Data structs */,
@@ -115,9 +113,9 @@
 		E75AB05329DDAE3E004D5DB3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E75AB04929DD7E3D004D5DB3 /* FeedViewController.swift */,
-				E75AB05129DD9490004D5DB3 /* PostViewController.swift */,
-				E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */,
+				E75AB03529DD6AFC004D5DB3 /* MainTabBarController.swift */,
+				E74ED3C029E4594D00B85BF3 /* ProfileControllers */,
+				E7F8C42F29FAD87200D7DE26 /* FeedControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -150,6 +148,16 @@
 				E78D061F29F94A72002E8F3A /* UITableViewCell+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E7F8C42F29FAD87200D7DE26 /* FeedControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E75AB04929DD7E3D004D5DB3 /* FeedViewController.swift */,
+				E75AB05129DD9490004D5DB3 /* PostViewController.swift */,
+				E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */,
+			);
+			path = FeedControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

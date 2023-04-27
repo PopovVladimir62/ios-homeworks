@@ -25,6 +25,8 @@ final class PhotosTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.image = UIImage(systemName: "arrow.right")
+        image.contentMode = .scaleAspectFill
+        image.tintColor = .black
         
         return image
     }()
@@ -55,14 +57,6 @@ final class PhotosTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.firstPhotoImageView.image = nil
-        self.secondPhotoImageView.image = nil
-        self.thirdPhotoImageView.image = nil
-        self.fourthPhotoImageView.image = nil
     }
     
     //MARK: - Public func

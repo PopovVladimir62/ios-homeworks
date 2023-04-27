@@ -19,7 +19,7 @@ class PhotosViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
-        let collectionView = UICollectionView()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemGray3
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
@@ -34,6 +34,7 @@ class PhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCollectionView()
         addSubviews()
         setupConstraints()
         photoCollectionView.reloadData()
@@ -42,14 +43,10 @@ class PhotosViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        tabBarController?.tabBar.isHidden = true
         self.tabBarController?.navigationItem.title = "Photo gallery"
+        self.tabBarController?.navigationItem.titleView?.tintColor = .black
     }
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        navigationController?.navigationBar.isHidden = true
-//    }
+
     
     //MARK: - Layout
     
@@ -99,5 +96,10 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         inset
+    }
+    
+    func configureCollectionView() {
+        view.backgroundColor = .systemGray6
+        title = "Photo Gallery"
     }
 }

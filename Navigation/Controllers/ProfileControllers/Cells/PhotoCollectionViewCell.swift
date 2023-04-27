@@ -14,6 +14,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.backgroundColor = .black
         
         return image
     }()
@@ -22,6 +24,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .systemGray6
         addSubviews()
         setupConstraints()
     }

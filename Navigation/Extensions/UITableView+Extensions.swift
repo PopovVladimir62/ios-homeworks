@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//для корректного тоборажения tableHeaderView в таблице
+//для корректного отображения tableHeaderView в таблице
 extension UITableView {
     func setAndLayout(headerView: UIView) {
         tableHeaderView = headerView

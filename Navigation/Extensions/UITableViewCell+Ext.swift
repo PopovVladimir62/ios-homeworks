@@ -14,8 +14,8 @@ extension UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 6
-        imageView?.contentMode = .scaleAspectFit
-        backgroundColor = .white
+        image.contentMode = .scaleAspectFit
+        image.backgroundColor = .black
         image.clipsToBounds = true
         
         return image
