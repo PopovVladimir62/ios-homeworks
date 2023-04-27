@@ -17,7 +17,7 @@ class PostViewController: UIViewController {
     }
 
     func setupView() {
-        self.navigationItem.title = FeedViewController().somePost.title
+        self.navigationItem.title = "some post"
         self.view.backgroundColor = CustomColor().hexStringToUIColor(hex: "C0DBEA")
     }
 

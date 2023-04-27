@@ -9,77 +9,74 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let myProfileHeaderView = ProfileHeaderView()
+    //MARK: - Data
     
-    //MARK: - button
+    let myPublications = Post.makeArray()
     
-    private lazy var newButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .blue
-        button.setTitle("new action", for: .normal)
-        button.setTitleColor(.gray, for: .highlighted)
-        button.layer.cornerRadius = 4
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .regular)
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-        
-        return button
+    //MARK: - UI elements
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        return tableView
     }()
     
-    @objc func tapButton() {
-        //future code here
-    }
-    //MARK: - fill in top area in Profile title
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-    }
-    //MARK: - lifecycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(newButton)
-        setupMyProfileHeaderView()
-        setupLayout()
-        initializeHideKeyboard()
+        view.backgroundColor = .systemGray6
+        addSubviews()
+        setupConstraints()
     }
     
-    func setupMyProfileHeaderView() {
-        view.backgroundColor = .lightGray
-        title = "Profile"
-        view.addSubview(myProfileHeaderView)
-        myProfileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+    //MARK: - Layout
+    private func addSubviews() {
+        view.addSubview(tableView)
     }
-    //MARK: - layout
-    func setupLayout() {
+    
+    private func setupConstraints() {
+        let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            myProfileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            myProfileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            myProfileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            myProfileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            
-            newButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            newButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         ])
     }
-    
 }
-//MARK: - add tap on screen to hide Keyboard
 
-extension ProfileViewController {
-    func initializeHideKeyboard(){
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(dismissMyKeyboard))
-        view.addGestureRecognizer(tap)
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        myPublications.count
     }
-    @objc func dismissMyKeyboard(){
-        view.endEditing(true)
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.setupCell(model: myPublications[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let header = ProfileHeaderView()
+            return header
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 250
+        } else {
+            return 0
+        }
     }
 }
+
+
