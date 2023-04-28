@@ -42,7 +42,7 @@ class PostTableViewCell: UITableViewCell {
         
         return imageView
     }()
-        
+    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -116,6 +116,7 @@ class PostTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            
             authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
@@ -136,3 +137,4 @@ class PostTableViewCell: UITableViewCell {
         ])
     }
 }
+

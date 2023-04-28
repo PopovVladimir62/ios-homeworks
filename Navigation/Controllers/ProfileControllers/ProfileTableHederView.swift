@@ -67,6 +67,9 @@ class ProfileHeaderView: UIView {
         statusLabel.text = statusTextField.text
         print("\(statusTextField.text ?? "")")
         statusTextField.text = ""
+        if statusLabel.text == "" {
+            statusLabel.text = "you're fired!"
+        }
     }
 //MARK: - textfield to write the status
     
