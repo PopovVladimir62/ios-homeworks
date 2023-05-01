@@ -24,7 +24,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = .white
         addSubviews()
         setupConstraints()
     }

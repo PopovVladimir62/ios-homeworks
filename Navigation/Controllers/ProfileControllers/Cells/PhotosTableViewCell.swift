@@ -76,43 +76,44 @@ final class PhotosTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         let screenSize: CGRect = UIScreen.main.bounds
-        let edgeInset: CGFloat = 12
-        let insetBetweenImage: CGFloat = 8
-        let sideOfPhoto: CGFloat = (screenSize.width - edgeInset * 2 - insetBetweenImage * 3) / 4
+        let sideOfPhoto: CGFloat = (screenSize.width - Metric.edgeInset * 2 - Metric.insetBetweenImage * 3) / 4
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: edgeInset),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgeInset),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metric.edgeInset),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.edgeInset),
             
             arrowImage.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            arrowImage.heightAnchor.constraint(equalToConstant: edgeInset),
-            arrowImage.widthAnchor.constraint(equalToConstant: edgeInset),
-            arrowImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -edgeInset),
+            arrowImage.heightAnchor.constraint(equalToConstant: Metric.edgeInset),
+            arrowImage.widthAnchor.constraint(equalToConstant: Metric.edgeInset),
+            arrowImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.edgeInset),
             
-            firstPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: edgeInset),
-            firstPhotoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: edgeInset),
-            firstPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -edgeInset),
+            firstPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metric.edgeInset),
+            firstPhotoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.edgeInset),
+            firstPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Metric.edgeInset),
             firstPhotoImageView.widthAnchor.constraint(equalToConstant: sideOfPhoto),
             firstPhotoImageView.heightAnchor.constraint(equalToConstant: sideOfPhoto),
             
-            secondPhotoImageView.leadingAnchor.constraint(equalTo: firstPhotoImageView.trailingAnchor, constant: insetBetweenImage),
-            secondPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -edgeInset),
+            secondPhotoImageView.leadingAnchor.constraint(equalTo: firstPhotoImageView.trailingAnchor, constant: Metric.insetBetweenImage),
+            secondPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Metric.edgeInset),
             secondPhotoImageView.widthAnchor.constraint(equalToConstant: sideOfPhoto),
             secondPhotoImageView.heightAnchor.constraint(equalToConstant: sideOfPhoto),
-            secondPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: edgeInset),
+            secondPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metric.edgeInset),
             
-            thirdPhotoImageView.leadingAnchor.constraint(equalTo: secondPhotoImageView.trailingAnchor, constant: insetBetweenImage),
-            thirdPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -edgeInset),
+            thirdPhotoImageView.leadingAnchor.constraint(equalTo: secondPhotoImageView.trailingAnchor, constant: Metric.insetBetweenImage),
+            thirdPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Metric.edgeInset),
             thirdPhotoImageView.widthAnchor.constraint(equalToConstant: sideOfPhoto),
             thirdPhotoImageView.heightAnchor.constraint(equalToConstant: sideOfPhoto),
-            thirdPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: edgeInset),
+            thirdPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metric.edgeInset),
             
-            fourthPhotoImageView.leadingAnchor.constraint(equalTo: thirdPhotoImageView.trailingAnchor, constant: edgeInset),
-            fourthPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -edgeInset),
+            fourthPhotoImageView.leadingAnchor.constraint(equalTo: thirdPhotoImageView.trailingAnchor, constant: Metric.edgeInset),
+            fourthPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Metric.edgeInset),
             fourthPhotoImageView.widthAnchor.constraint(equalToConstant: sideOfPhoto),
             fourthPhotoImageView.heightAnchor.constraint(equalToConstant: sideOfPhoto),
-            fourthPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: edgeInset)
+            fourthPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metric.edgeInset)
             
         ])
     }
 }
+
+
+
