@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-//MARK: - Name label
+    //MARK: - Name label
     
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -17,10 +17,10 @@ class ProfileHeaderView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return label
     }()
-//MARK: - Status label
+    //MARK: - Status label
     
     private let statusLabel: UILabel = {
         let label = UILabel()
@@ -31,10 +31,11 @@ class ProfileHeaderView: UIView {
         
         return label
     }()
-//MARK: - user avatar
+    //MARK: - user avatar
     
-    private let avatarImage: UIImageView = {
+    private var avatarImage: UIImageView = {
         let image = UIImageView()
+        image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 60
         image.backgroundColor = .clear
         image.layer.borderColor = UIColor.white.cgColor
@@ -45,7 +46,8 @@ class ProfileHeaderView: UIView {
         
         return image
     }()
-//MARK: - button to set status
+    
+    //MARK: - button to set status
     
     lazy private var statusButton: UIButton = {
         let button = UIButton()
@@ -71,7 +73,7 @@ class ProfileHeaderView: UIView {
             statusLabel.text = "you're fired!"
         }
     }
-//MARK: - textfield to write the status
+    //MARK: - textfield to write the status
     
     lazy private var statusTextField: UITextField = {
         let textField = UITextField()
@@ -85,7 +87,7 @@ class ProfileHeaderView: UIView {
         textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
         textField.addTarget(self, action: #selector(textFieldShouldReturn), for: .editingDidEndOnExit)
-
+        
         return textField
     }()
     
@@ -93,18 +95,19 @@ class ProfileHeaderView: UIView {
         endEditing(true)
     }
     
-//MARK: - initialisation
+    //MARK: - initialisation
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupHierarchy()
         setupLayout()
+        setupGesture()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//MARK: - add UI elements
+    //MARK: - add UI elements
     
     private func setupHierarchy() {
         addSubview(nameLabel)
@@ -113,7 +116,7 @@ class ProfileHeaderView: UIView {
         addSubview(statusTextField)
         addSubview(statusButton)
     }
-//MARK: - layout
+    //MARK: - layout
     
     func setupLayout(){
         NSLayoutConstraint.activate([
@@ -122,8 +125,8 @@ class ProfileHeaderView: UIView {
             
             avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            avatarImage.widthAnchor.constraint(equalToConstant: 120),
             avatarImage.heightAnchor.constraint(equalToConstant: 120),
+            avatarImage.widthAnchor.constraint(equalToConstant: 120),
             
             statusLabel.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -64),
             statusLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
@@ -139,4 +142,17 @@ class ProfileHeaderView: UIView {
             statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -12)
         ])
     }
+    
+    //MARK: - Gesture
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToAnimate))
+        avatarImage.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func goToAnimate() {
+        let animatedVC = AnimatedAvatarViewController()
+   //     navigationController?.pushViewController(animatedVC, animated: false)
+    }
 }
+
