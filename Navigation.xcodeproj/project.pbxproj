@@ -28,7 +28,6 @@
 		E7B3A30A2A001B0C00AD0E90 /* AnimatedAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A3092A001B0C00AD0E90 /* AnimatedAvatarViewController.swift */; };
 		E7C92E4329F548A700E978E3 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */; };
 		E7DF6C1B29F139BD008A0030 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */; };
-		E7F8C43129FBB80200D7DE26 /* PhotosTableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8C43029FBB80200D7DE26 /* PhotosTableViewCell+Ext.swift */; };
 		E7FF7CE529DEF8DB00C33098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +55,6 @@
 		E7B3A3092A001B0C00AD0E90 /* AnimatedAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedAvatarViewController.swift; sourceTree = "<group>"; };
 		E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+Extensions.swift"; path = "Navigation/Extensions/UITableView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
-		E7F8C43029FBB80200D7DE26 /* PhotosTableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotosTableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,7 +149,6 @@
 				E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */,
 				E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */,
 				E78D061F29F94A72002E8F3A /* UITableViewCell+Ext.swift */,
-				E7F8C43029FBB80200D7DE26 /* PhotosTableViewCell+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,7 +246,6 @@
 				E7DF6C1B29F139BD008A0030 /* UITableView+Extensions.swift in Sources */,
 				E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */,
 				E75A4ED629DEB8B400AE08D6 /* Post.swift in Sources */,
-				E7F8C43129FBB80200D7DE26 /* PhotosTableViewCell+Ext.swift in Sources */,
 				E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */,
 				E78D062029F94A72002E8F3A /* UITableViewCell+Ext.swift in Sources */,
 				E75AB04829DD7E19004D5DB3 /* ProfileViewController.swift in Sources */,
@@ -400,7 +396,7 @@
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -430,7 +426,7 @@
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
