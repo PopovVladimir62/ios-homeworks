@@ -24,15 +24,7 @@ class AnimatedAvatarViewController: UIViewController {
         
         return image
     }()
-    
-    private var dismissButton: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "xmark")
-        image.isHidden = true
-        
-        return image
-    }()
+
     
     private var leadingAvatarConstraint = NSLayoutConstraint()
     private var topAvatarConstraint = NSLayoutConstraint()

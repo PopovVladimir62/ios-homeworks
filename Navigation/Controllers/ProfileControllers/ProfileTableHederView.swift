@@ -8,6 +8,16 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
+
+    var widthAvatarConstraint = NSLayoutConstraint()
+    var heightAvatarConstraint = NSLayoutConstraint()
+    var topAvatarConstraint = NSLayoutConstraint()
+    var leadingAvatarConstraint = NSLayoutConstraint()
+    //Transparent view
+    var widthTVConstraint = NSLayoutConstraint()
+    var heightTVConstraint = NSLayoutConstraint()
+    var topTVConstraint = NSLayoutConstraint()
+    var leadingTVConstraint = NSLayoutConstraint()
     
     //MARK: - Name label
     
@@ -37,7 +47,6 @@ class ProfileHeaderView: UIView {
         let image = UIImageView()
         image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 60
-        image.backgroundColor = .clear
         image.layer.borderColor = UIColor.white.cgColor
         image.layer.borderWidth = 3
         image.clipsToBounds = true
@@ -45,6 +54,27 @@ class ProfileHeaderView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
+    }()
+    
+    private var transparentView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
+        
+        return image
+    }()
+    
+    private lazy var dismissButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: "xmark.circle")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(image, for: .normal)
+        button.tintColor = .black
+        button.isHidden = true
+        button.alpha = 0
+        button.addTarget(self, action: #selector(backAnimation), for: .touchUpInside)
+        
+        return button
     }()
     
     //MARK: - button to set status
@@ -107,31 +137,55 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - add UI elements
     
     private func setupHierarchy() {
         addSubview(nameLabel)
-        addSubview(avatarImage)
         addSubview(statusLabel)
         addSubview(statusTextField)
         addSubview(statusButton)
+        addSubview(transparentView)
+        addSubview(dismissButton)
+        transparentView.addSubview(avatarImage)
     }
     //MARK: - layout
     
     func setupLayout(){
+        
+        widthAvatarConstraint = avatarImage.widthAnchor.constraint(equalToConstant: 120)
+        heightAvatarConstraint = avatarImage.heightAnchor.constraint(equalToConstant: 120)
+        topAvatarConstraint = avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 16)
+        leadingAvatarConstraint = avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+        
+        widthTVConstraint = transparentView.widthAnchor.constraint(equalToConstant: 120)
+        heightTVConstraint = transparentView.heightAnchor.constraint(equalToConstant: 120)
+        topTVConstraint = transparentView.topAnchor.constraint(equalTo: topAnchor, constant: 16)
+        leadingTVConstraint = transparentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+        
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            avatarImage.heightAnchor.constraint(equalToConstant: 120),
-            avatarImage.widthAnchor.constraint(equalToConstant: 120),
+            widthTVConstraint,
+            heightTVConstraint,
+            leadingTVConstraint,
+            topTVConstraint,
+            
+            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            dismissButton.widthAnchor.constraint(equalToConstant: 20),
+            dismissButton.heightAnchor.constraint(equalToConstant: 20),
+            
+            topAvatarConstraint,
+            leadingAvatarConstraint,
+            heightAvatarConstraint,
+            widthAvatarConstraint,
             
             statusLabel.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -64),
             statusLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             
-            statusButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 36),
+            statusButton.topAnchor.constraint(equalTo: topAnchor, constant: 172),
             statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 50),
@@ -147,12 +201,68 @@ class ProfileHeaderView: UIView {
     
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goToAnimate))
-        avatarImage.addGestureRecognizer(tapGesture)
+        transparentView.addGestureRecognizer(tapGesture)
     }
     
+    //MARK: - Animation
+    
     @objc private func goToAnimate() {
-        let animatedVC = AnimatedAvatarViewController()
-   //     navigationController?.pushViewController(animatedVC, animated: false)
+        self.statusButton.isEnabled = false
+        self.statusTextField.isEnabled = false
+        
+        self.leadingTVConstraint.constant = 0
+        self.topTVConstraint.constant = 0
+        self.widthTVConstraint.constant = UIScreen.main.bounds.width
+        self.heightTVConstraint.constant = UIScreen.main.bounds.height
+        self.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            self.topAvatarConstraint.constant = (UIScreen.main.bounds.height - UIScreen.main.bounds.width) / 2
+            self.leadingAvatarConstraint.constant = 0
+            self.heightAvatarConstraint.constant = UIScreen.main.bounds.width
+            self.widthAvatarConstraint.constant = UIScreen.main.bounds.width
+            self.avatarImage.layer.cornerRadius = 0
+            
+
+            self.transparentView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+
+            self.layoutIfNeeded()
+        } completion: { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.dismissButton.isHidden = false
+                self.dismissButton.alpha = 1
+            }
+        }
+    }
+    
+    @objc private func backAnimation() {
+        self.statusButton.isEnabled = true
+        self.statusTextField.isEnabled = true
+        
+        UIView.animate(withDuration: 0.3) {
+            self.dismissButton.alpha = 0
+            
+        } completion: { _ in
+            self.dismissButton.isHidden = true
+            
+            UIView.animate(withDuration: 0.5) {
+                self.transparentView.backgroundColor = UIColor.white.withAlphaComponent(0)
+
+                self.widthAvatarConstraint.constant = 120
+                self.heightAvatarConstraint.constant = 120
+                self.leadingAvatarConstraint.constant = 16
+                self.topAvatarConstraint.constant = 16
+                self.avatarImage.layer.cornerRadius = 60
+                
+                self.layoutIfNeeded()
+            } completion: { _ in
+                self.widthTVConstraint.constant = 120
+                self.heightTVConstraint.constant = 120
+                self.leadingTVConstraint.constant = 16
+                self.topTVConstraint.constant = 16
+            }
+        }
     }
 }
 
