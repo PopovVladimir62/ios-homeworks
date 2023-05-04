@@ -1,19 +1,17 @@
 //
-//  ProfileViewController.swift
+//  ModalViewController.swift
 //  Navigation
 //
-//  Created by Владимир on 05.04.2023.
+//  Created by Владимир on 06.04.2023.
 //
 
 import UIKit
 
-
-
-class ProfileViewController: UIViewController {
+class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = CustomColor().hexStringToUIColor(hex: "9ADCC9")
+        view.backgroundColor = .white
         setupButton()
     }
     
@@ -42,8 +40,8 @@ class ProfileViewController: UIViewController {
         self.view.addSubview(self.button)
         self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
         self.button.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        self.button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 14).isActive = true
+        self.button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -14).isActive = true
         self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
-
+    
