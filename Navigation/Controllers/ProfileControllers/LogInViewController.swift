@@ -58,6 +58,17 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
+    private var warningLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        label.textColor = .red
+        label.text = "Login is too short!"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        
+        return label
+    }()
+    
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Password"
@@ -76,7 +87,8 @@ class LogInViewController: UIViewController {
     }()
     
     @objc func textFieldShouldReturn() -> Bool {
-        view.endEditing(true)
+        loginTextField.backgroundColor = .systemGray6
+        return view.endEditing(true)
     }
     
     private lazy var loginButton: UIButton = {
@@ -94,6 +106,17 @@ class LogInViewController: UIViewController {
     }()
     
     @objc func pressLoginButton() {
+        if loginTextField.text?.count ?? 0 < 1{
+            loginTextField.backgroundColor = CustomColor().hexStringToUIColor(hex: "EA5455")
+            loginTextField.shake()
+            loginTextField.placeholder = "The field must be filled in"
+            return
+        } else if passwordTextField.text?.count ?? 0 < 5 {
+            passwordTextField.backgroundColor = CustomColor().hexStringToUIColor(hex: "EA5455")
+            passwordTextField.shake()
+            warningLabel.isHidden = false
+            return
+        }
         let profileViewController = ProfileViewController()
         navigationController?.pushViewController(profileViewController, animated: true)
     }
@@ -122,6 +145,18 @@ class LogInViewController: UIViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        loginTextField.text = nil
+        loginTextField.placeholder = "Email or phone"
+        passwordTextField.text = nil
+        passwordTextField.placeholder = "Password"
+        passwordTextField.backgroundColor = .systemGray6
+        warningLabel.isHidden = true
+        
+    }
+    
     //MARK: - Layout
     
     private func addSubviews() {
@@ -131,6 +166,7 @@ class LogInViewController: UIViewController {
         loginStackView.addArrangedSubview(loginTextField)
         loginStackView.addArrangedSubview(passwordTextField)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(warningLabel)
     }
     
     private func setConstraints() {
@@ -153,7 +189,10 @@ class LogInViewController: UIViewController {
             loginButton.topAnchor.constraint(equalTo: loginStackView.bottomAnchor, constant: 16),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             loginButton.leadingAnchor.constraint(equalTo: loginStackView.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: loginStackView.trailingAnchor)
+            loginButton.trailingAnchor.constraint(equalTo: loginStackView.trailingAnchor),
+            
+            warningLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
+            warningLabel.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor)
         ])
     }
 }
