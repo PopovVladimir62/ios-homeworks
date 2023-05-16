@@ -63,7 +63,7 @@ class LogInViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
         label.textColor = .red
-        label.text = "Login is too short!"
+        label.text = "Password is too short!"
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
         return label
@@ -111,14 +111,27 @@ class LogInViewController: UIViewController {
             loginTextField.shake()
             loginTextField.placeholder = "The field must be filled in"
             return
+        } else if !loginTextField.text!.isValidEmail() {
+            loginTextField.backgroundColor = CustomColor().hexStringToUIColor(hex: "EA5455")
+            loginTextField.shake()
+            return
         } else if passwordTextField.text?.count ?? 0 < 5 {
             passwordTextField.backgroundColor = CustomColor().hexStringToUIColor(hex: "EA5455")
             passwordTextField.shake()
             warningLabel.isHidden = false
             return
+        } else if loginTextField.text == "my@mail.ru" && passwordTextField.text == "12345" {
+            let profileViewController = ProfileViewController()
+            navigationController?.pushViewController(profileViewController, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Error!", message: "Incorrect login or password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Try again", style: .default))
+            self.present(alert, animated: true)
+            loginTextField.text = nil
+            passwordTextField.text = nil
+            passwordTextField.backgroundColor = .systemGray6
+            warningLabel.isHidden = true
         }
-        let profileViewController = ProfileViewController()
-        navigationController?.pushViewController(profileViewController, animated: true)
     }
     
     
