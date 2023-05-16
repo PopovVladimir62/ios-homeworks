@@ -106,6 +106,9 @@ class LogInViewController: UIViewController {
     }()
     
     @objc func pressLoginButton() {
+        // MARK: DELETE NEXT 2 String
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
         if loginTextField.text?.count ?? 0 < 1{
             loginTextField.backgroundColor = CustomColor().hexStringToUIColor(hex: "EA5455")
             loginTextField.shake()

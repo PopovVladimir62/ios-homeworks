@@ -100,6 +100,7 @@ class ProfileHeaderView: UIView {
         print("\(statusTextField.text ?? "")")
         statusTextField.text = ""
         if statusLabel.text == "" {
+            statusTextField.shake()
             statusLabel.text = "you're fired!"
         }
     }
