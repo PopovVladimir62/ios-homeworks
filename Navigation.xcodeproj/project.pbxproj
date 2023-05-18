@@ -29,6 +29,7 @@
 		E7C92E4329F548A700E978E3 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */; };
 		E7DF6C1B29F139BD008A0030 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */; };
 		E7F91DF52A16384E00423082 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F91DF42A16384E00423082 /* Posts.swift */; };
+		E7F91DF72A1655A900423082 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F91DF62A1655A900423082 /* ModalViewController.swift */; };
 		E7FF7CE529DEF8DB00C33098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		E7C92E4229F548A700E978E3 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E7DF6C1A29F139BD008A0030 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+Extensions.swift"; path = "Navigation/Extensions/UITableView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		E7F91DF42A16384E00423082 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		E7F91DF62A1655A900423082 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E7FF7CE429DEF8DB00C33098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				E78D061D29F9415E002E8F3A /* PhotosViewController.swift */,
 				E7774C7429F00E3000E42DB0 /* LogInViewController.swift */,
 				E75AB04729DD7E19004D5DB3 /* ProfileViewController.swift */,
+				E7F91DF62A1655A900423082 /* ModalViewController.swift */,
 				E74ED3C129E459A000B85BF3 /* ProfileTableHederView.swift */,
 				E78D061829F9404C002E8F3A /* Cells */,
 			);
@@ -250,6 +253,7 @@
 				E7DF6C1B29F139BD008A0030 /* UITableView+Extensions.swift in Sources */,
 				E75AB05229DD9490004D5DB3 /* PostViewController.swift in Sources */,
 				E75A4ED629DEB8B400AE08D6 /* Post.swift in Sources */,
+				E7F91DF72A1655A900423082 /* ModalViewController.swift in Sources */,
 				E75AB05029DD887D004D5DB3 /* CustomColor.swift in Sources */,
 				E78D062029F94A72002E8F3A /* UITableViewCell+Ext.swift in Sources */,
 				E75AB04829DD7E19004D5DB3 /* ProfileViewController.swift in Sources */,

@@ -106,6 +106,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if indexPath.section == 0 {
                 navigationController?.pushViewController(PhotosViewController(), animated: true)
+            } else if indexPath.section == 1 {
+                posts[indexPath.row].views += 1
+                var modalVC = ModalViewController()
+                modalVC.setupData(model: posts[indexPath.row])
+                tableView.reloadData()
+                present(modalVC, animated: true)
             }
         }
 }
