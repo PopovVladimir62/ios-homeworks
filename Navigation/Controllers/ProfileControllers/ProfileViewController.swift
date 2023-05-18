@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController, IncreaseLikeDelegate {
+
     
     //MARK: - Data
     
-    let myPublications = Post.makeArray()
     let fourPhoto = DataForPhotoCell.makeArray()
     
     //MARK: - UI elements
@@ -63,7 +63,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return myPublications.count
+            return posts.count
         }
     }
     
@@ -74,7 +74,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-            cell.setupCell(model: myPublications[indexPath.row])
+            cell.setupCell(model: posts[indexPath.row])
+            cell.delegate = self
+            cell.setIndexPath(indexPath)
             return cell
         }
         return UITableViewCell()
@@ -108,4 +110,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
 }
 
+//MARK: -  IncreaseLikeDelegate
+
+extension ProfileViewController {
+    func increaseLikes(for model: inout[Post], indexPath: IndexPath) {
+        model[indexPath.row].likes += 1
+    }
+}
 

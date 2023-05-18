@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol IncreaseLikeDelegate: AnyObject {
+    func increaseLikes(for model: inout[Post], indexPath: IndexPath)
+}
+
 class PostTableViewCell: UITableViewCell {
+    
+    weak var delegate: IncreaseLikeDelegate?
+    private var indexPathCell = IndexPath()
     
     //MARK: - UI elements
     
@@ -52,29 +59,8 @@ class PostTableViewCell: UITableViewCell {
         
         return stackView
     }()
-    //stackview for views
-    
-    private lazy var viewsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.isUserInteractionEnabled = true
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        stackView.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
-        
-        return stackView
-    }()
-    
+
     private var viewLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .black
-        
-        return label
-    }()
-    
-    private var viewLabelTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Views: "
@@ -83,31 +69,8 @@ class PostTableViewCell: UITableViewCell {
         
         return label
     }()
-    //stackview for likes
-    
-    private lazy var likesStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.isUserInteractionEnabled = true
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        stackView.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
-        
-        return stackView
-    }()
-    
+
     private var likesLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.isUserInteractionEnabled = true
-        label.text = ""
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .black
-        
-        return label
-    }()
-    
-    private var likesLabelTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = true
@@ -145,20 +108,18 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.text = model.author
         postImageView.image = UIImage(named: model.image)
         descriptionLabel.text = model.description
-        likesLabel.text = "\(model.likes)"
-        viewLabel.text = "\(model.views)"
+        likesLabel.text = "Likes: \(model.likes)"
+        viewLabel.text = "Views: \(model.views)"
+    }
+    
+    func setIndexPath(_ indexPath: IndexPath) {
+        indexPathCell = indexPath
     }
     
     //MARK: - Private
     private func setupSubviews() {
-        likesAndViewsStackView.addArrangedSubview(viewsStackView)
-        likesAndViewsStackView.addArrangedSubview(likesStackView)
-        
-        viewsStackView.addArrangedSubview(viewLabelTitle)
-        viewsStackView.addArrangedSubview(viewLabel)
-        
-        likesStackView.addArrangedSubview(likesLabelTitle)
-        likesStackView.addArrangedSubview(likesLabel)
+        likesAndViewsStackView.addArrangedSubview(viewLabel)
+        likesAndViewsStackView.addArrangedSubview(likesLabel)
         
         contentView.addSubview(authorLabel)
         contentView.addSubview(postImageView)
@@ -168,11 +129,12 @@ class PostTableViewCell: UITableViewCell {
     
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addLike))
-        likesStackView.addGestureRecognizer(tapGesture)
+        likesLabel.addGestureRecognizer(tapGesture)
     }
     
     @objc func addLike() {
-        likesLabel.text = String(Int(likesLabel.text!)! + 1)
+        delegate?.increaseLikes(for: &posts, indexPath: indexPathCell)
+        likesLabel.text = "Likes: " + String(posts[indexPathCell.row].likes)
     }
     
     //MARK: - layout
