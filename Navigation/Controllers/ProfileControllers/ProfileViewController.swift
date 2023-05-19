@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController, IncreaseLikeDelegate {
+
     
     //MARK: - Data
     
-    let myPublications = Post.makeArray()
     let fourPhoto = DataForPhotoCell.makeArray()
     
     //MARK: - UI elements
@@ -63,7 +63,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return myPublications.count
+            return posts.count
         }
     }
     
@@ -74,7 +74,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-            cell.setupCell(model: myPublications[indexPath.row])
+            cell.setupCell(model: posts[indexPath.row])
+            cell.delegate = self
+            cell.setIndexPath(indexPath)
             return cell
         }
         return UITableViewCell()
@@ -104,8 +106,37 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if indexPath.section == 0 {
                 navigationController?.pushViewController(PhotosViewController(), animated: true)
+            } else if indexPath.section == 1 {
+                posts[indexPath.row].views += 1
+                let modalVC = ModalViewController()
+                modalVC.setupData(model: posts[indexPath.row])
+                tableView.reloadData()
+                present(modalVC, animated: true)
             }
         }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete && indexPath.section == 1 {
+        print("Deleted")
+        
+        posts.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+      }
+    }
 }
 
+//MARK: -  IncreaseLikeDelegate
+
+extension ProfileViewController {
+    func increaseLikes(for model: inout[Post], indexPath: IndexPath, cell: PostTableViewCell) {
+        if cell.isLiked == false {
+            model[indexPath.row].likes += 1
+            cell.isLiked.toggle()
+        } else {
+            model[indexPath.row].likes -= 1
+            cell.isLiked.toggle()
+        }
+    }
+}
 

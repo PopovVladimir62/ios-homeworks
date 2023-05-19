@@ -1,21 +1,15 @@
 //
-//  PostTableViewCell.swift
+//  ModalViewController.swift
 //  Navigation
 //
-//  Created by Владимир on 20.04.2023.
+//  Created by Владимир on 18.05.2023.
 //
 
 import UIKit
 
-protocol IncreaseLikeDelegate: AnyObject {
-    func increaseLikes(for model: inout[Post], indexPath: IndexPath, cell: PostTableViewCell)
-}
-
-class PostTableViewCell: UITableViewCell {
+class ModalViewController: UIViewController {
     
-    weak var delegate: IncreaseLikeDelegate?
-    private var indexPathCell = IndexPath()
-    var isLiked: Bool = false
+    var isLiked: Bool?
     
     //MARK: - UI elements
     
@@ -60,7 +54,7 @@ class PostTableViewCell: UITableViewCell {
         
         return stackView
     }()
-
+    
     private var viewLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +64,7 @@ class PostTableViewCell: UITableViewCell {
         
         return label
     }()
-
+    
     private var likesLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -84,29 +78,25 @@ class PostTableViewCell: UITableViewCell {
     
     //MARK: - Lifecycle
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupSubviews()
         setupConstraints()
-        setupGesture()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    //MARK: - Private
+    private func setupSubviews() {
+        likesAndViewsStackView.addArrangedSubview(viewLabel)
+        likesAndViewsStackView.addArrangedSubview(likesLabel)
+        
+        view.addSubview(authorLabel)
+        view.addSubview(postImageView)
+        view.addSubview(descriptionLabel)
+        view.addSubview(likesAndViewsStackView)
     }
+    //MARK: - public
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        authorLabel.text = nil
-        descriptionLabel.text = nil
-        postImageView.image = nil
-        viewLabel.text = nil
-        likesLabel.text = nil
-        likesLabel.textColor = .black
-    }
-    
-    //MARK: - Public
-    func setupCell(model: Post) {
+    func setupData(model: Post) {
         authorLabel.text = model.author
         postImageView.image = UIImage(named: model.image)
         descriptionLabel.text = model.description
@@ -120,63 +110,30 @@ class PostTableViewCell: UITableViewCell {
             likesLabel.text = "Likes: \(model.likes)"
             likesLabel.textColor = .black
         }
+        view.backgroundColor = .white
     }
-    
-    func setIndexPath(_ indexPath: IndexPath) {
-        indexPathCell = indexPath
-    }
-    
-    //MARK: - Private
-    private func setupSubviews() {
-        likesAndViewsStackView.addArrangedSubview(viewLabel)
-        likesAndViewsStackView.addArrangedSubview(likesLabel)
-        
-        contentView.addSubview(authorLabel)
-        contentView.addSubview(postImageView)
-        contentView.addSubview(descriptionLabel)
-        contentView.addSubview(likesAndViewsStackView)
-    }
-    
-    private func setupGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addLike))
-        likesLabel.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func addLike() {
-        delegate?.increaseLikes(for: &posts, indexPath: indexPathCell, cell: self)
-        if isLiked == true {
-            likesLabel.text = " ♥ Likes: " + String(posts[indexPathCell.row].likes)
-            likesLabel.textColor = .red
-            posts[indexPathCell.row].isLiked.toggle()
-        } else {
-            likesLabel.text = "Likes: " + String(posts[indexPathCell.row].likes)
-            likesLabel.textColor = .black
-            posts[indexPathCell.row].isLiked.toggle()
-        }
-    }
-    
     //MARK: - layout
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            authorLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            authorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            authorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
             postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
-            postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            postImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1),
+            postImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            postImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            postImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),
             
             descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             likesAndViewsStackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            likesAndViewsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            likesAndViewsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            likesAndViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            likesAndViewsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            likesAndViewsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
 }
+
