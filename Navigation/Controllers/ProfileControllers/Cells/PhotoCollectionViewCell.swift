@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol CustomCellDelegate: AnyObject {
+    func didTapImageInCell(_ image: UIImage?, frameImage: CGRect, indexPath: IndexPath)
+}
+
 class PhotoCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: CustomCellDelegate?
+    private var indexPathCell = IndexPath()
     
     //MARK: - UI elements
     
@@ -16,6 +23,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         image.backgroundColor = .black
+        image.isUserInteractionEnabled = true
         
         return image
     }()
@@ -27,6 +35,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .systemGray6
         addSubviews()
         setupConstraints()
+        addGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +47,22 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
     
+    //MARK: - public
+    
+    func setIndexPath(_ indexPath: IndexPath) {
+        indexPathCell = indexPath
+    }
+    
+    //MARK: - private
+    
+    private func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        imageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapAction() {
+        delegate?.didTapImageInCell(imageView.image, frameImage: imageView.frame, indexPath: indexPathCell)
+    }
     //MARK: - Layout
     
     private func addSubviews() {

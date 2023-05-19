@@ -108,7 +108,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 navigationController?.pushViewController(PhotosViewController(), animated: true)
             } else if indexPath.section == 1 {
                 posts[indexPath.row].views += 1
-                var modalVC = ModalViewController()
+                let modalVC = ModalViewController()
                 modalVC.setupData(model: posts[indexPath.row])
                 tableView.reloadData()
                 present(modalVC, animated: true)
@@ -119,8 +119,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: -  IncreaseLikeDelegate
 
 extension ProfileViewController {
-    func increaseLikes(for model: inout[Post], indexPath: IndexPath) {
-        model[indexPath.row].likes += 1
+    func increaseLikes(for model: inout[Post], indexPath: IndexPath, cell: PostTableViewCell) {
+        if cell.isLiked == false {
+            model[indexPath.row].likes += 1
+            cell.isLiked.toggle()
+        } else {
+            model[indexPath.row].likes -= 1
+            cell.isLiked.toggle()
+        }
     }
 }
 

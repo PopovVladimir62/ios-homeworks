@@ -9,6 +9,8 @@ import UIKit
 
 class ModalViewController: UIViewController {
     
+    var isLiked: Bool?
+    
     //MARK: - UI elements
     
     private var authorLabel: UILabel = {
@@ -100,6 +102,14 @@ class ModalViewController: UIViewController {
         descriptionLabel.text = model.description
         likesLabel.text = "Likes: \(model.likes)"
         viewLabel.text = "Views: \(model.views)"
+        isLiked = model.isLiked
+        if isLiked == true {
+            likesLabel.text = " ♥ Likes: \(model.likes)"
+            likesLabel.textColor = .red
+        } else {
+            likesLabel.text = "Likes: \(model.likes)"
+            likesLabel.textColor = .black
+        }
         view.backgroundColor = .white
     }
     //MARK: - layout

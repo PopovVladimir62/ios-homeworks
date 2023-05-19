@@ -14,4 +14,5 @@ struct Post {
     var image: String // имя картинки из каталога Assets.xcassets
     var likes: Int //  количество лайков
     var views: Int // - количество просмотров
+    var isLiked: Bool // поставлен свой лайк или нет
 }

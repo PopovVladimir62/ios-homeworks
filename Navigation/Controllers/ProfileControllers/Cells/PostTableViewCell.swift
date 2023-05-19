@@ -8,13 +8,14 @@
 import UIKit
 
 protocol IncreaseLikeDelegate: AnyObject {
-    func increaseLikes(for model: inout[Post], indexPath: IndexPath)
+    func increaseLikes(for model: inout[Post], indexPath: IndexPath, cell: PostTableViewCell)
 }
 
 class PostTableViewCell: UITableViewCell {
     
     weak var delegate: IncreaseLikeDelegate?
     private var indexPathCell = IndexPath()
+    var isLiked: Bool = false
     
     //MARK: - UI elements
     
@@ -101,6 +102,7 @@ class PostTableViewCell: UITableViewCell {
         postImageView.image = nil
         viewLabel.text = nil
         likesLabel.text = nil
+        likesLabel.textColor = .black
     }
     
     //MARK: - Public
@@ -110,6 +112,14 @@ class PostTableViewCell: UITableViewCell {
         descriptionLabel.text = model.description
         likesLabel.text = "Likes: \(model.likes)"
         viewLabel.text = "Views: \(model.views)"
+        isLiked = model.isLiked
+        if isLiked == true {
+            likesLabel.text = " ♥ Likes: \(model.likes)"
+            likesLabel.textColor = .red
+        } else {
+            likesLabel.text = "Likes: \(model.likes)"
+            likesLabel.textColor = .black
+        }
     }
     
     func setIndexPath(_ indexPath: IndexPath) {
@@ -133,8 +143,16 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @objc func addLike() {
-        delegate?.increaseLikes(for: &posts, indexPath: indexPathCell)
-        likesLabel.text = "Likes: " + String(posts[indexPathCell.row].likes)
+        delegate?.increaseLikes(for: &posts, indexPath: indexPathCell, cell: self)
+        if isLiked == true {
+            likesLabel.text = " ♥ Likes: " + String(posts[indexPathCell.row].likes)
+            likesLabel.textColor = .red
+            posts[indexPathCell.row].isLiked.toggle()
+        } else {
+            likesLabel.text = "Likes: " + String(posts[indexPathCell.row].likes)
+            likesLabel.textColor = .black
+            posts[indexPathCell.row].isLiked.toggle()
+        }
     }
     
     //MARK: - layout
@@ -162,4 +180,3 @@ class PostTableViewCell: UITableViewCell {
         ])
     }
 }
-
