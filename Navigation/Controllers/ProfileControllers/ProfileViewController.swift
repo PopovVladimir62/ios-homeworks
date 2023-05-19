@@ -114,6 +114,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 present(modalVC, animated: true)
             }
         }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete && indexPath.section == 1 {
+        print("Deleted")
+        
+        posts.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+      }
+    }
 }
 
 //MARK: -  IncreaseLikeDelegate

@@ -107,8 +107,8 @@ class LogInViewController: UIViewController {
     
     @objc func pressLoginButton() {
         // MARK: DELETE NEXT 2 String
-        let profileViewController = ProfileViewController()
-        navigationController?.pushViewController(profileViewController, animated: true)
+//        let profileViewController = ProfileViewController()
+//        navigationController?.pushViewController(profileViewController, animated: true)
         if loginTextField.text?.count ?? 0 < 1{
             loginTextField.backgroundColor = CustomColor().hexStringToUIColor(hex: "EA5455")
             loginTextField.shake()
@@ -123,7 +123,7 @@ class LogInViewController: UIViewController {
             passwordTextField.shake()
             warningLabel.isHidden = false
             return
-        } else if loginTextField.text == "my@mail.ru" && passwordTextField.text == "12345" {
+        } else if loginTextField.text == "admin@mail.ru" && passwordTextField.text == "12345" {
             let profileViewController = ProfileViewController()
             navigationController?.pushViewController(profileViewController, animated: true)
         } else {
